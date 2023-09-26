@@ -18,9 +18,9 @@ void heap_sort(int *array, size_t size)
 
 	for (k = size - 1; k > 0; k--)
 	{
-		swap_q(array, array + k);
+		swap_q(&array[0], &array[k]);
 		print_array(array, size);
-		sift_down(array, size, k, 0);
+		sift_down(array, k, 0, size);
 	}
 }
 
@@ -40,16 +40,16 @@ void sift_down(int *array, size_t size, size_t root, size_t base)
 	above = 2 * root + 2;
 	under = root;
 
-	if (below < size && array[below] > array[under])
+	if (below < base && array[below] > array[under])
 		under = below;
-	if (above < size && array[above] > array[under])
+	if (above < base && array[above] > array[under])
 		under = above;
 
 	if (under != root)
 	{
-		swap_q(array + root, array + under);
+		swap_q(&array[root], &array[under]);
 		print_array(array, size);
-		sift_down(array, size, base, under);
+		sift_down(array, size, under, base);
 	}
 }
 
