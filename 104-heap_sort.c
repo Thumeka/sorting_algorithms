@@ -13,14 +13,14 @@ void heap_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	for (k = (size - 2) / 2; k >= 0; --k)
+	for (k = (size - 2) / 2; k >= 0; k--)
 		sift_down(array, size, k, size);
 
-	for (k = (size - 1); k > 0; --k)
+	for (k = (size - 1); k > 0; k--)
 	{
 		swap_q(&array[0], &array[k]);
 		print_array(array, size);
-		sift_down(array, k, 0, size);
+		sift_down(array, size, k, 0);
 	}
 }
 
