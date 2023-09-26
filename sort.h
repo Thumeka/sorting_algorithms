@@ -31,6 +31,8 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void swap_q(int *sw1, int *sw2);
 void shell_sort(int *array, size_t size);
+void sift_down(int *array, size_t size, size_t root, size_t base);
+void heap_sort(int *array, size_t size);
 int lomuto_partition(int *array, int start, int last, size_t size);
 void lomuto_s(int *array, int start, int last, size_t size);
 void swap_nodes(listint_t **head, listint_t **list);
