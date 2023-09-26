@@ -26,13 +26,13 @@ void lomuto_s(int *array, int start, int last, size_t size)
 	int pivot;
 
 
-	if (start - last > 0)
+	if (start >= last)
 	{
-		pivot = lomuto_partition(array, start, last, size);
-		lomuto_s(array, start, pivot - 1, size);
-		lomuto_s(array, pivot + 1, last, size);
+		return;
 	}
-
+	pivot = lomuto_partition(array, start, last, size);
+	lomuto_s(array, start, pivot - 1, size);
+	lomuto_s(array, pivot + 1, last, size);
 }
 
 /**
