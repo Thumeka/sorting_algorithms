@@ -41,6 +41,8 @@ void sift_down(int *array, size_t size, size_t root, size_t base)
 	under = root;
 
 	if (below < base && array[below] > array[under])
+		under = below;
+	if (above < base && array[above] > array[under])
 		under = above;
 
 	if (under != root)
