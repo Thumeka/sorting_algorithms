@@ -10,7 +10,7 @@ void heap_sort(int *array, size_t size)
 {
 	int k;
 
-	if (array == NULL || size < 2)
+	if (array == '\0' || size < 2)
 		return;
 
 	for (k = (size - 2) / 2; k >= 0; --k)
