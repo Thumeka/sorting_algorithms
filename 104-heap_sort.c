@@ -14,7 +14,7 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	for (k = (size / 2) - 1; k >= 0; k--)
-		sift_down(array, size, size, k);
+		sift_down(array, size, k, size);
 
 	for (k = size - 1; k > 0; k--)
 	{
@@ -40,7 +40,7 @@ void sift_down(int *array, size_t size, size_t root, size_t base)
 	above = 2 * root + 2;
 	under = root;
 
-	if (below < base && array[below] > array[under])
+	if (below < size && array[below] > array[under])
 		under = below;
 	if (above < base && array[above] > array[under])
 		under = above;
