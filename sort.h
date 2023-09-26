@@ -29,7 +29,7 @@ void insertion_sort_list(listint_t **list);
 void swapped(int *asc1, int *asc2);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
-void swap_q(int *array, int k, int l, size_t size);
+void swap_q(int *sw1, int *sw2);
 int lomuto_partition(int *array, int start, int last, size_t size);
 void lomuto_s(int *array, int start, int last, size_t size);
 void swap_nodes(listint_t **head, listint_t **list);

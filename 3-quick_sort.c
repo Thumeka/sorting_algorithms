@@ -8,7 +8,7 @@
 
 void quick_sort(int *array, size_t size)
 {
-	if (size < 2)
+	if (array == NULL || size < 2)
 		return;
 	lomuto_s(array, 0, size - 1, size);
 }
@@ -26,7 +26,7 @@ void lomuto_s(int *array, int start, int last, size_t size)
 	int pivot;
 
 
-	if (start < last)
+	if (start - last > 0)
 	{
 		pivot = lomuto_partition(array, start, last, size);
 		lomuto_s(array, start, pivot - 1, size);
@@ -46,39 +46,42 @@ void lomuto_s(int *array, int start, int last, size_t size)
 
 int lomuto_partition(int *array, int start, int last, size_t size)
 {
-	int pivot = array[start];
-	int k = last - 1;
-	int l;
+	int *quick, left, right;
 
-	for (l = last; l <= start - 1; l++)
+
+	quick = array + last;
+	for (left = right = start; right < last; right++)
 	{
-		if (array[l] < pivot)
+		if (array[right] < *quick)
 		{
-			k++;
-			swap_q(array, k, l, size);
+			if (left < right)
+			{
+				swap_q(array + right, array + left);
+				print_array(array, size);
+			}
+			left++;
 		}
 	}
-	swap_q(array, k + 1, last, size);
-	return (k + 1);
+
+	if (array[left] > *quick)
+	{
+		swap_q(array + left, quick);
+		print_array(array, size);
+	}
+	return (left);
 }
 
 /**
  * swap_q - swaps the position
- * @array: the  array
- * @k: integer
- * @l: integer
- * @size: the size
+ * @sw1: position first
+ * @sw2: second position
  */
 
-void swap_q(int *array, int k, int l, size_t size)
+void swap_q(int *sw1, int *sw2)
 {
-	int temp;
+	int swop;
 
-	if (k != l)
-	{
-		temp = array[k];
-		array[k] = array[l];
-		array[l] = temp;
-		print_array(array, size);
-	}
+	swop = *sw1;
+	*sw1 = *sw2;
+	*sw2 = swop;
 }
